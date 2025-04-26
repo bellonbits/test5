@@ -146,7 +146,8 @@ class CorporateReportPDF(FPDF):
     def add_bullet_points(self, points):
         self.set_font("Arial", "", 11)
         for point in points:
-            self.cell(10, 6, "•", ln=0)
+            # Using hyphen instead of bullet character to avoid encoding issues
+            self.cell(10, 6, "-", ln=0)
             wrapped_point = textwrap.wrap(point, 75)
             self.cell(0, 6, wrapped_point[0], ln=True)
             for line in wrapped_point[1:]:
